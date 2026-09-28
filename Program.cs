@@ -27,9 +27,10 @@ class Program
             {
                 case 1:
                     nomeDoAluno = CadastrarAluno();
-                    Console.WriteLine("Aluno cadastrado: " + nomeDoAluno);
+                    Console.WriteLine($"Aluno cadastrado: {nomeDoAluno}" );
                     break;
                 case 2:
+                    LancarNotas(notas);
                     Console.WriteLine("Notas preparadas para lançar");
                     break;
                 case 3:
@@ -52,5 +53,15 @@ class Program
         string NomeDoAluno = Console.ReadLine();
 
         return NomeDoAluno;
+    }
+    static void LancarNotas(double[] notas) 
+    {
+        for (int i = 0; i < notas.Length; i++)
+        {
+            Console.WriteLine($"Digite a nota {i + 1}: ");
+            notas[i] = double.Parse(Console.ReadLine());
+        }
+
+
     }
 }
