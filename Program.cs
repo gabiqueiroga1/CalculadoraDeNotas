@@ -15,12 +15,12 @@ class Program
         while (opcao != 4)
         {
             Console.WriteLine("CALCULADORA DE NOTAS");
-            Console.WriteLine("==============================");
+            Console.WriteLine("=============================");
             Console.WriteLine("1. Cadastrar aluno");
             Console.WriteLine("2. Lançar notas");
             Console.WriteLine("3. Calcular média");
             Console.WriteLine("4. Sair");
-            Console.WriteLine("==============================");
+            Console.WriteLine("=============================");
 
             Console.WriteLine("Escolha uma opção: ");
 
