@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Globalization;
 class Program
 {
     static void Main()
     {
         int opcao = 0;
+        string nomeDoAluno = "";
 
         while (opcao != 4)
         {
@@ -23,7 +25,8 @@ class Program
             switch (opcao)
             {
                 case 1:
-                    Console.WriteLine("Cadastra aluno");
+                    nomeDoAluno = CadastrarAluno();
+                    Console.WriteLine("Aluno cadastrado: " + nomeDoAluno);
                     break;
                 case 2:
                     Console.WriteLine("Lança notas");
@@ -41,5 +44,12 @@ class Program
 
             Console.WriteLine();
         }
+    }
+    static string CadastrarAluno()
+    {
+        Console.WriteLine("Digite o nome do aluno: ");
+        string NomeDoAluno = Console.ReadLine();
+
+        return NomeDoAluno;
     }
 }
