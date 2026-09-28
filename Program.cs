@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Globalization;
+
 class Program
 {
     static void Main()
@@ -31,7 +31,7 @@ class Program
                     break;
                 case 2:
                     LancarNotas(notas);
-                    Console.WriteLine("Notas preparadas para lançar");
+                    Console.WriteLine("Notas cadastradas!");
                     break;
                 case 3:
                     Console.WriteLine("Calcula média");
@@ -50,18 +50,40 @@ class Program
     static string CadastrarAluno()
     {
         Console.WriteLine("Digite o nome do aluno: ");
-        string NomeDoAluno = Console.ReadLine();
+        string nomeDoAluno = Console.ReadLine();
 
-        return NomeDoAluno;
+        return nomeDoAluno;
     }
     static void LancarNotas(double[] notas) 
     {
         for (int i = 0; i < notas.Length; i++)
         {
-            Console.WriteLine($"Digite a nota {i + 1}: ");
-            notas[i] = double.Parse(Console.ReadLine());
+            bool notaValida = false;
+
+            while (!notaValida)
+            {
+                Console.WriteLine($"Digite a nota {i + 1}: ");
+
+                if (double.TryParse(Console.ReadLine(), out double nota)) 
+                {
+                    if (nota >= 0 && nota <= 10)
+                    {
+                        notas[i] = nota;
+                        notaValida = true;
+                    }
+                    else 
+                    {
+                        Console.WriteLine("Nota Inválida. Digite uma nota entre 0 e 10.");
+                    
+                    }
+                
+                }
+                else 
+                {
+                    Console.WriteLine("Entrada inválida. Digite um número válido.");
+                }
+
+            }
         }
-
-
     }
 }
