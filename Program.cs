@@ -34,7 +34,8 @@ class Program
                     Console.WriteLine("Notas cadastradas!");
                     break;
                 case 3:
-                    Console.WriteLine("Calcula média");
+                    double media = CalcularMedia(notas);
+                    Console.WriteLine($"Média: {media:F2}");
                     break;
                 case 4:
                     Console.WriteLine("Saindo...");
@@ -85,5 +86,19 @@ class Program
 
             }
         }
+    }
+    static double CalcularMedia(double[] notas) 
+    {
+        double soma = 0;
+
+        for(int i = 0; i < notas.Length; i++)
+        {
+            soma += notas[i];
+        }
+
+        double media = soma / notas.Length;
+
+        return media;
+
     }
 }
