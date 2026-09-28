@@ -21,7 +21,12 @@ class Program
             Console.WriteLine();
             Console.WriteLine("Escolha uma opção: ");
 
-            opcao = int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+            {
+                Console.WriteLine("Entrada inválida. Digite um número de 1 a 4.");
+                Console.WriteLine();
+                continue;
+            }
 
             Console.WriteLine();
 
