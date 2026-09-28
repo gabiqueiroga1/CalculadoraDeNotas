@@ -2,6 +2,8 @@
 
 class Program
 {
+    const double MEDIA_APROVACAO = 7.0;
+    const double MEDIA_RECUPERACAO = 5.0;
     static void Main()
     {
         int opcao = 0;
@@ -36,6 +38,7 @@ class Program
                 case 3:
                     double media = CalcularMedia(notas);
                     Console.WriteLine($"Média: {media:F2}");
+                    ExibirResultado(media);
                     break;
                 case 4:
                     Console.WriteLine("Saindo...");
@@ -100,5 +103,21 @@ class Program
 
         return media;
 
+    }
+    static void ExibirResultado(double media) 
+    {
+        if (media >= MEDIA_APROVACAO)
+        {
+            Console.WriteLine("Situação: Aprovado!");
+        
+        }
+        else if (media >= MEDIA_RECUPERACAO)
+        {
+            Console.WriteLine("Situação: Em recuperação.");
+        }
+        else
+        {
+            Console.WriteLine("Situação: Reprovado.");
+        }
     }
 }
