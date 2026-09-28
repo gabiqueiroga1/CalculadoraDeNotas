@@ -10,21 +10,26 @@ class Program
         string nomeDoAluno = "";
         double[] notas = new double[3];
 
+        bool alunoCadastrado = false;
+
         while (opcao != 4)
         {
             Console.WriteLine("CALCULADORA DE NOTAS");
-            Console.WriteLine();
+            Console.WriteLine("==============================");
             Console.WriteLine("1. Cadastrar aluno");
             Console.WriteLine("2. Lançar notas");
             Console.WriteLine("3. Calcular média");
             Console.WriteLine("4. Sair");
-            Console.WriteLine();
+            Console.WriteLine("==============================");
+
             Console.WriteLine("Escolha uma opção: ");
 
             if (!int.TryParse(Console.ReadLine(), out opcao))
             {
                 Console.WriteLine("Entrada inválida. Digite um número de 1 a 4.");
                 Console.WriteLine();
+                Console.Write("Pressione ENTER para continuar...");
+                Console.ReadLine();
                 continue;
             }
 
@@ -34,26 +39,56 @@ class Program
             {
                 case 1:
                     nomeDoAluno = CadastrarAluno();
+                    alunoCadastrado = true;
+
                     Console.WriteLine($"Aluno cadastrado: {nomeDoAluno}" );
                     break;
+
                 case 2:
+                    if (!alunoCadastrado) 
+                    {
+                        Console.WriteLine("ERRO: cadastre um aluno antes de lançar as notas.");
+                        break;
+                    }
+
                     LancarNotas(notas);
+                    Console.WriteLine();
                     Console.WriteLine("Notas cadastradas!");
                     break;
+
                 case 3:
+                    if (!alunoCadastrado)
+                    {
+                        Console.WriteLine("ERRO: cadastre um aluno antes de calcular a média.");
+                        break;
+                    }
+
                     double media = CalcularMedia(notas);
+
+                    Console.WriteLine("-------- RESULTADO --------");
+                    Console.WriteLine($"Aluno: {nomeDoAluno}");
                     Console.WriteLine($"Média: {media:F2}");
+
                     ExibirResultado(media);
+
+                    Console.WriteLine("---------------------------");
                     break;
+
                 case 4:
                     Console.WriteLine("Saindo...");
                     break;
+
                 default:
-                    Console.WriteLine("Opção inválida.");
+                    Console.WriteLine("Opção inválida. Escolha uma opção de 1 a 4.");
                     break;
             }
-
-            Console.WriteLine();
+            
+            if (opcao != 4)
+            {
+                Console.WriteLine();
+                Console.Write("Pressione ENTER para voltar ao menu...");
+                Console.ReadLine();
+            }
         }
     }
     static string CadastrarAluno()
