@@ -6,6 +6,7 @@ class Program
     {
         int opcao = 0;
         string nomeDoAluno = "";
+        double[] notas = new double[3];
 
         while (opcao != 4)
         {
@@ -29,7 +30,7 @@ class Program
                     Console.WriteLine("Aluno cadastrado: " + nomeDoAluno);
                     break;
                 case 2:
-                    Console.WriteLine("Lança notas");
+                    Console.WriteLine("Notas preparadas para lançar");
                     break;
                 case 3:
                     Console.WriteLine("Calcula média");
